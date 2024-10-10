@@ -1,0 +1,52 @@
+@import "normalize.css";
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,400;0,500;0,600;0,700;1,300;1,400&display=swap");
+
+:root {
+    --primary: #fe2c55;
+    --layout-header-height: 60px;
+    --layout-header-width: 300px;
+    --secondary: #1618230f;
+    --black: #161823;
+    --while: #fff;
+    --silver-background: #16182308;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "IBM Plex Sans", san-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+}
+
+input,
+button,
+[tabindex] {
+    outline: none;
+    border: none;
+}
+
+#root a {
+    color: var(--black);
+    text-decoration: none;
+}
+
+// custom tippy background
+body .tippy-box {
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 4px;
+    background-color: #545454eb;
+    .tippy-arrow {
+        color: #545454eb;
+    }
+}
