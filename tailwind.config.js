@@ -8,6 +8,9 @@ module.exports = {
             spacing: {
                 13: "3.2rem",
             },
+            animation: {
+                "spin-fast": "spin 0.8s linear infinite",
+            },
         },
     },
     plugins: [],

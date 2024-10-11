@@ -1,28 +1,29 @@
 import classNames from "classnames/bind";
+import { Link } from "react-router-dom";
 import style from "./AccountItem.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle, faEllipsis } from "@fortawesome/free-solid-svg-icons";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import Image from "~/components/Image";
 
 const cx = classNames.bind(style);
-function AccountItem() {
+function AccountItem({ data }) {
     return (
-        <div className={cx("wrapper")}>
+        <Link to={`/@${data.nickname}`} className={cx("wrapper")}>
             <div className={cx("avatar")}>
-                <img
-                    src="https://img-cache.coccoc.com/image2?i=2&l=50/1030590614"
-                    alt="Hình ảnh của Bích Liên"
-                />
+                <Image src={data.avatar} alt="Kết quả tìm kiếm" />
             </div>
             <div className={cx("content")}>
                 <div className={cx("info")}>
-                    <div className={cx("name d-flex align-items-center")}>
-                        <h4>Nguyễn Thị Bích Liên</h4>
-                        <FontAwesomeIcon className={cx("checkIcon")} icon={faCheckCircle} />
+                    <div className={cx("name flex items-center ")}>
+                        <h4>{data.full_name}</h4>
+                        {data.tick && (
+                            <FontAwesomeIcon className={cx("checkIcon")} icon={faCheckCircle} />
+                        )}
                     </div>
-                    <span className={cx("username")}>@BichLien</span>
+                    <span className={cx("username")}>{data.nickname}</span>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 }
 

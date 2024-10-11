@@ -1,10 +1,6 @@
 import classNames from "classnames/bind";
-import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faCircleXmark,
-    faSpinner,
-    faMagnifyingGlass,
     faEllipsisVertical,
     faEarthAsia,
     faCircleQuestion,
@@ -15,29 +11,20 @@ import {
     faGear,
     faSignOut,
 } from "@fortawesome/free-solid-svg-icons";
-import HedlessTippy from "@tippyjs/react/headless";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-
 import images from "~/assets/images";
 import style from "./Header.module.scss";
-import { Wrapper as PopperWrapper } from "~/components/Popper";
-import AccountItem from "~/components/AccountItem";
 import Button from "~/components/Button";
 import Menu from "~/components/Popper/Menu";
+import Image from "~/components/Image";
 import { faMessage } from "@fortawesome/free-regular-svg-icons";
+import Search from "~/components/Layout/components/Search";
 const cx = classNames.bind(style);
 
 function Header() {
     // user
     const currentUser = true;
-
-    const [searchResult, setSearchResult] = useState([]);
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([]);
-        }, 0);
-    }, []);
 
     const MENU_ITEMS = [
         {
@@ -108,32 +95,7 @@ function Header() {
                     </div>
                 </div>
                 <div className={cx("box_center")}>
-                    <HedlessTippy
-                        interactive={true}
-                        visible={searchResult.length > 0}
-                        render={(attrs) => (
-                            <div className={cx("searchResult")} tabIndex="-1" {...attrs}>
-                                <PopperWrapper>
-                                    <h4 className={cx("searchAccount")}>Accounts</h4>
-                                    <AccountItem />
-                                    <AccountItem />
-                                    <AccountItem />
-                                    <AccountItem />
-                                </PopperWrapper>
-                            </div>
-                        )}
-                    >
-                        <div className={cx("box_search")}>
-                            <input type="text" placeholder="Search" spellCheck={false} />
-                            <button className={cx("clear")}>
-                                <FontAwesomeIcon icon={faCircleXmark} />
-                            </button>
-                            <FontAwesomeIcon className={cx("loading")} icon={faSpinner} />
-                            <button className={cx("search-btn")}>
-                                <FontAwesomeIcon icon={faMagnifyingGlass} />
-                            </button>
-                        </div>
-                    </HedlessTippy>
+                    <Search />
                 </div>
                 <div className={cx("box_right")}>
                     <div className={cx("box_actions flex items-center text-2xl text-[#161823]")}>
@@ -158,8 +120,8 @@ function Header() {
                             onChange={handleMenuChange}
                         >
                             {currentUser ? (
-                                <img
-                                    src="https://tse4.mm.bing.net/th?id=OIP.6zDy4uIaBILsnIE5J4sReAHaEK&pid=Api&P=0&h=180"
+                                <Image
+                                    src="https:/tse5J4ReAHaEK&pid=ApP=0&h=180"
                                     alt=""
                                     className="w-13 h-13 object-cover rounded-full ml-3"
                                 />
