@@ -2,6 +2,7 @@
 import classNames from "classnames/bind";
 import style from "~/components/Layout/components/Search/Search.module.scss";
 import { Wrapper as PopperWrapper } from "~/components/Popper";
+import * as searchService from "~/apiService/searchService";
 import AccountItem from "~/components/AccountItem";
 import { useEffect, useState, useRef } from "react";
 import { faCircleXmark, faMagnifyingGlass, faSpinner } from "@fortawesome/free-solid-svg-icons";
@@ -28,21 +29,46 @@ function Search() {
             return;
         }
 
-        setLoading(true);
+        const fetchAPI = async () => {
+            setLoading(true);
 
-        fetch(
-            `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-                debounce,
-            )}&type=less`,
-        )
-            .then((resp) => resp.json())
-            .then((data) => {
-                setSearchResult(data.data);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(true);
-            });
+            const result = await searchService.search(debounce);
+
+            setSearchResult(result);
+
+            setLoading(false);
+        };
+
+        fetchAPI();
+
+        // setLoading(true);
+        // axios
+        //     .get(
+        //         `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
+        //             debounce,
+        //         )}&type=less`,
+        //     )
+        //     .then((res) => {
+        //         setSearchResult(res.data.data);
+        //         setLoading(false);
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     });
+
+        // fetch(
+        //     `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
+        //         debounce,
+        //     )}&type=less`,
+        // )
+        //     .then((resp) => resp.json())
+        //     .then((data) => {
+        //         setSearchResult(data.data);
+        //         setLoading(false);
+        //     })
+        //     .catch(() => {
+        //         setLoading(true);
+        //     });
     }, [debounce]);
 
     const handleClear = () => {
