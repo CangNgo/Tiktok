@@ -28,12 +28,8 @@
     }
 
     &:hover {
-        border-color: #16182333;
+        border-color: none;
     }
-}
-
-.box_search :hover .search-btn {
-    background-color: red;
 }
 
 .clear,

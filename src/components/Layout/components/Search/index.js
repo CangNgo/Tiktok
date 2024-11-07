@@ -40,35 +40,6 @@ function Search() {
         };
 
         fetchAPI();
-
-        // setLoading(true);
-        // axios
-        //     .get(
-        //         `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-        //             debounce,
-        //         )}&type=less`,
-        //     )
-        //     .then((res) => {
-        //         setSearchResult(res.data.data);
-        //         setLoading(false);
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
-
-        // fetch(
-        //     `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-        //         debounce,
-        //     )}&type=less`,
-        // )
-        //     .then((resp) => resp.json())
-        //     .then((data) => {
-        //         setSearchResult(data.data);
-        //         setLoading(false);
-        //     })
-        //     .catch(() => {
-        //         setLoading(true);
-        //     });
     }, [debounce]);
 
     const handleClear = () => {
@@ -79,6 +50,13 @@ function Search() {
 
     const handleHideResult = () => {
         setShowResult(false);
+    };
+
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if (!searchValue.startsWith(" ")) {
+            setSearchValue(searchValue);
+        }
     };
 
     return (
@@ -105,9 +83,7 @@ function Search() {
                     type="text"
                     placeholder="Search"
                     spellCheck={false}
-                    onChange={(e) => {
-                        setSearchValue(e.target.value);
-                    }}
+                    onChange={handleChange}
                     onFocus={() => setShowResult(true)}
                 />
 

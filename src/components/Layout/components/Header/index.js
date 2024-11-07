@@ -11,14 +11,16 @@ import {
     faGear,
     faSignOut,
 } from "@fortawesome/free-solid-svg-icons";
+import { faMessage } from "@fortawesome/free-regular-svg-icons";
 import Tippy from "@tippyjs/react";
+
+import routesConfig from "~/config/routes";
 import "tippy.js/dist/tippy.css";
 import images from "~/assets/images";
 import style from "./Header.module.scss";
 import Button from "~/components/Button";
 import Menu from "~/components/Popper/Menu";
 import Image from "~/components/Image";
-import { faMessage } from "@fortawesome/free-regular-svg-icons";
 import Search from "~/components/Layout/components/Search";
 const cx = classNames.bind(style);
 
@@ -90,8 +92,11 @@ function Header() {
         <header className={cx("wrapper")}>
             <div className={cx("content")}>
                 <div className={cx("box_left")}>
-                    <div className={cx("box_left-logo")}>
-                        <img src={images.logo} alt="TikTok" />
+                    <div className={cx("box_left-logo", "mb-3")}>
+                        <Button to={routesConfig.home}>
+                            {" "}
+                            <img src={images.logo} alt="TikTok" />
+                        </Button>
                     </div>
                 </div>
                 <div className={cx("box_center")}>

@@ -8,7 +8,7 @@ import { useState } from "react";
 const cx = classNames.bind(style);
 const defauleFn = () => {};
 
-function Menu({ children, items = [], onChange = defauleFn }) {
+function Menu({ children, items = [], hideOnClick = false, onChange = defauleFn }) {
     const renderItem = () => {
         return current.data.map((item, index) => {
             const isParent = !!item.children;
@@ -39,6 +39,7 @@ function Menu({ children, items = [], onChange = defauleFn }) {
             delay={[0, 700]}
             interactive
             placement="bottom-end"
+            hideOnClick={hideOnClick}
             render={(attrs) => (
                 <div className={cx("menu-list")} tabIndex="-1" {...attrs}>
                     <PopperWrapper className={cx("menu-popper")}>
